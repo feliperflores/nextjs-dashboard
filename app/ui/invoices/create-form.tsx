@@ -17,7 +17,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
   const [state, dispatch] = useFormState(createInvoice, initialState);
   console.log(state);
   return (
-    <form action={dispatch}>
+    <form action={dispatch} aria-labelledby="form-error">
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
@@ -91,7 +91,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           </legend>
           <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
             <div className="flex gap-4">
-              <div className="flex items-center" aria-describedby="amount-error">
+              <div className="flex items-center" aria-describedby="status-error">
                 <input
                   id="pending"
                   name="status"
@@ -132,7 +132,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                 </p>
             ))}
           </div>
-          <div id="status-error" aria-live="polite" aria-atomic="true">
+          <div id="form-error" aria-live="polite" aria-atomic="true">
             {state?.message &&
               <p className="mt-2 text-sm text-red-500" key={state.message}>
                 {state.message}
